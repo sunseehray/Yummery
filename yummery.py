@@ -1,4 +1,31 @@
+import arcade
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
+SCREEN_TITLE = "Yummery"
+SCALING = 2.0
+
 # Build a sandwich game
+
+class Yummery(arcade.Window):
+    """Build a sandwich game
+    Player starts at the center, sandwich order pops up
+    Player can move anywhere, but not off screen
+    Player can hold up to two bread slices, and only one for each of the rest
+    Player builds the bread to feed the monster within 30 seconds.
+    If it feeds the wrong sandwich, the game ends.
+    Player can discard sandwich in a bin to restart.
+    Press ESC to exit game.
+    """
+
+    def __init__(self, width, height, title):
+        """Initialize the game
+        """
+        super().__init__(width, height, title)
+        self.monster_list = arcade.SpriteList()
+        self.ingredients_list = arcade.SpriteList()
+        self.all_sprites = arcade.SpriteList()
+
 # Ingredients - Bread slice, cheese, lettuce, tomatoes, burger patty
 # Server - movable object
 # Goal of the game is to build a sandwich according to random directions
