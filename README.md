@@ -24,6 +24,7 @@
 
 * [Arcade Python Game Framework Tutorial by realpython](https://realpython.com/arcade-python-game-framework/)
 * [Python Arcade Library](https://api.arcade.academy/en/latest/)
+* [Arcade Starting Template](https://api.arcade.academy/en/latest/example_code/starting_template.html)
 
 # Future Work
 
