@@ -15,11 +15,15 @@
 {Describe the tools that you used to develop the software}
 
 {Describe the programming language that you used and any libraries.}
+* Canva - graphic design
+* Python - programming language
+* Arcade - library
+* GitHub / Git - version control
 
 # Useful Websites
 
 * [Arcade Python Game Framework Tutorial by realpython](https://realpython.com/arcade-python-game-framework/)
-* [Web Site Name](http://url.link.goes.here)
+* [Python Arcade Library](https://api.arcade.academy/en/latest/)
 
 # Future Work
 
