@@ -25,16 +25,6 @@ class GameView(arcade.View):
         self.monster_sprite.bottom = 450
         self.all_sprites.append(self.monster_sprite)
 
-        self.player_sprite = arcade.Sprite("images/player.png")
-        self.player_sprite.position = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 100)
-        self.all_sprites.append(self.player_sprite)
-
-        self.sandwich_sprite = None
-        
-        self.garbage_sprite = arcade.Sprite("images/garbage.png")
-        self.garbage_sprite.position = (500,50)
-        self.all_sprites.append(self.garbage_sprite)
-
         self.bread_sprite = arcade.Sprite("images/bread.png")
         self.bread_sprite.position = (70,400)
         self.all_sprites.append(self.bread_sprite)
@@ -54,8 +44,20 @@ class GameView(arcade.View):
         self.lettuce_sprite = arcade.Sprite("images/lettuce.png")
         self.lettuce_sprite.position = (530, 250)
         self.all_sprites.append(self.lettuce_sprite)
-        
+
         self.order_sprite = None
+
+        self.player_sprite = arcade.Sprite("images/player.png")
+        self.player_sprite.position = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 100)
+        self.all_sprites.append(self.player_sprite)
+        
+        self.sandwich_sprite = None
+
+        self.garbage_sprite = arcade.Sprite("images/garbage.png")
+        self.garbage_sprite.position = (500,50)
+        self.all_sprites.append(self.garbage_sprite)
+
+        
     
         # and set them to None
 
@@ -82,6 +84,16 @@ class GameView(arcade.View):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
+        self.all_sprites.update()
+
+        if self.player_sprite.top > WINDOW_HEIGHT:
+            self.player_sprite.top = WINDOW_HEIGHT
+        if self.player_sprite.right > WINDOW_WIDTH:
+            self.player_sprite.right = WINDOW_WIDTH
+        if self.player_sprite.bottom < 0:
+            self.player_sprite.bottom = 0
+        if self.player_sprite.left < 0:
+            self.player_sprite.left = 0
         pass
 
     def on_key_press(self, key, key_modifiers):
@@ -90,6 +102,22 @@ class GameView(arcade.View):
         For a full list of keys, see:
         https://api.arcade.academy/en/latest/arcade.key.html
         """
+        if key == arcade.key.Q:
+            # Quit
+            arcade.close_window()
+
+        if key == arcade.key.UP:
+            self.player_sprite.change_y = PLAYER_MOVEMENT_SPEED
+        
+        if key == arcade.key.DOWN:
+            self.player_sprite.change_y = -PLAYER_MOVEMENT_SPEED
+
+        if key == arcade.key.LEFT:
+            self.player_sprite.change_x = -PLAYER_MOVEMENT_SPEED
+
+        if key == arcade.key.RIGHT:
+            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
+
         pass
 
 
@@ -97,6 +125,20 @@ class GameView(arcade.View):
         """
         Called whenever the user lets off a previously pressed key.
         """
+
+        if (
+            key == arcade.key.UP
+            or key == arcade.key.DOWN
+            
+        ):
+            self.player_sprite.change_y = 0
+
+        if (
+            key == arcade.key.LEFT
+            or key == arcade.key.RIGHT
+        ):
+            self.player_sprite.change_x = 0
+
         pass
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
@@ -167,8 +209,8 @@ if __name__ == "__main__":
 
 # TO DO
 # GAME ASSETS - done
-# PLAYER SPRITE MOVEMENT
-# INGREDIENTS
+# PLAYER SPRITE MOVEMENT - done
+# INGREDIENTS - done
 # SANDWICH BUILDING
 # DELIVERY
 # GARBAGE BIN
