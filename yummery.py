@@ -20,6 +20,7 @@ class GameView(arcade.View):
         # If you have sprite lists, you should create them here,
         self.all_sprites = arcade.SpriteList()
 
+        # monster at top center
         self.monster_sprite = arcade.Sprite("images/monster.png", scale=0.6)
         self.monster_sprite.center_x = WINDOW_WIDTH/2
         self.monster_sprite.bottom = 450
@@ -28,7 +29,7 @@ class GameView(arcade.View):
         self.bread_sprite = arcade.Sprite("images/bread.png")
         self.bread_sprite.position = (70,400)
         self.all_sprites.append(self.bread_sprite)
-
+        
         self.patty_sprite = arcade.Sprite("images/patty.png")
         self.patty_sprite.position = (70, 250)
         self.all_sprites.append(self.patty_sprite)
@@ -45,22 +46,26 @@ class GameView(arcade.View):
         self.lettuce_sprite.position = (530, 250)
         self.all_sprites.append(self.lettuce_sprite)
 
+        # floating order near monster
         self.order_sprite = None
 
+        # player sprite starts at the center
         self.player_sprite = arcade.Sprite("images/player.png")
         self.player_sprite.position = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 100)
         self.all_sprites.append(self.player_sprite)
         
-        self.sandwich_sprite = None
-
+        # the sandwich being updated
+        self.sandwich_sprite = arcade.SpriteList()
+        # space between ingredients for the sandwich being built
+        self.ingredient_height = 10
+        
+        # garbage bin at lower right
         self.garbage_sprite = arcade.Sprite("images/garbage.png")
         self.garbage_sprite.position = (500,50)
         self.all_sprites.append(self.garbage_sprite)
 
-        
-    
-        # and set them to None
-
+        # sandwich code list
+        self.sandwich_code = []
 
     def reset(self):
         """Reset the game to the initial state."""
@@ -77,6 +82,7 @@ class GameView(arcade.View):
 
         # Call draw() on all your sprite lists below
         self.all_sprites.draw()
+        self.sandwich_sprite.draw()
 
     def on_update(self, delta_time):
         """
@@ -84,6 +90,13 @@ class GameView(arcade.View):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
+        sandwich_x = self.player_sprite.center_x + 5
+        sandwich_y = self.player_sprite.center_y
+
+        for index, ingredient in enumerate(self.sandwich_sprite):
+            ingredient.center_x = sandwich_x # off-center
+            ingredient.center_y = sandwich_y + index * self.ingredient_height # stacking up
+
         self.all_sprites.update()
 
         if self.player_sprite.top > WINDOW_HEIGHT:
@@ -118,6 +131,22 @@ class GameView(arcade.View):
         if key == arcade.key.RIGHT:
             self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
 
+        if key == arcade.key.ENTER:
+            if self.player_sprite.collides_with_sprite(self.monster_sprite) == True:
+                print("Sandwich delivered?")
+                self.reset_sandwich()
+            if self.player_sprite.collides_with_sprite(self.bread_sprite) == True:
+                self.add_ingredient("images/bread.png", 0)
+            if self.player_sprite.collides_with_sprite(self.patty_sprite) == True:
+                self.add_ingredient("images/patty.png", 1)
+            if self.player_sprite.collides_with_sprite(self.cheese_sprite) == True:
+                self.add_ingredient("images/cheese.png", 2)
+            if self.player_sprite.collides_with_sprite(self.lettuce_sprite) == True:
+                self.add_ingredient("images/lettuce.png", 3)
+            if self.player_sprite.collides_with_sprite(self.tomato_sprite) == True:
+                self.add_ingredient("images/tomato.png", 4)
+            if self.player_sprite.collides_with_sprite(self.garbage_sprite) == True:
+                self.reset_sandwich()
         pass
 
 
@@ -159,6 +188,39 @@ class GameView(arcade.View):
         Called when a user releases a mouse button.
         """
         pass
+
+    def monster_order():
+        """
+        Random orders for a sandwich
+        """
+        pass
+
+    def is_sandwich_matched(self):
+        """
+        Check to see if the sandwich delivered is the sandwich ordered
+        """
+        pass
+
+    def add_ingredient(self, ingredient_texture, code):
+        """
+        Add ingredient to sandwich
+        """
+        ingredient = arcade.Sprite(
+            ingredient_texture, 
+            scale=0.5,
+            center_x = self.player_sprite.center_x + 5, 
+            center_y = self.player_sprite.center_y
+        )
+        self.sandwich_sprite.append(ingredient)
+        self.sandwich_code.append(code)
+        print(self.sandwich_code)
+    
+    def reset_sandwich(self):
+        """
+        reset sandwich
+        """
+        self.sandwich_sprite.clear()
+        self.sandwich_code = []
 
 def main():
     """ Main function """
@@ -210,10 +272,12 @@ if __name__ == "__main__":
 # TO DO
 # GAME ASSETS - done
 # PLAYER SPRITE MOVEMENT - done
+
 # INGREDIENTS - done
-# SANDWICH BUILDING
+# SANDWICH BUILDING - done
+
 # DELIVERY
-# GARBAGE BIN
+# GARBAGE BIN - done
 # DEBUG
 # DEMO
 # SOUND EFFECTS
