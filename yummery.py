@@ -242,40 +242,14 @@ if __name__ == "__main__":
     
     
 ######
-
-
-    # Set up the ingredient locations
-    # Maybe use collisions for triggering when player approaches HITBOX of ingredient, MONSTER for feeding
-    # BIN for resetting
-
-# Build the MVP
-# Sprite for player
-# Y position is constant, only X changes left to right within bounds
-# at certain X-positions, ingredients are placed
-# If player presses enter on an x-position, he will fill his plate with the ingredient from that position
-# Plate sprite updates with image of ingredient
-# Ingredient can only be added once, no double patties, etc
-# When player presses enter on the delivery counter, game verifies if correct order.
-# If order is correct, plate becomes empty.
-# If order is incorrect, error sound.
-# If player presses enter on the garbage counter, sandwich is automatically destoryed, plate becomes empty.
-
-# Maybe ingredients should have an index, so sandwich combos are like:
-# 0 - bread
-# 1 - burger patty
-# 2 - cheese
-# 3 - tomato
-# 4 - lettuce
-
+# NOTES
 # 3 Combos for now - 010, 0120, 012340
 
 # TO DO
 # GAME ASSETS - done
 # PLAYER SPRITE MOVEMENT - done
-
 # INGREDIENTS - done
 # SANDWICH BUILDING - done
-
 # DELIVERY
 # GARBAGE BIN - done
 # DEBUG
