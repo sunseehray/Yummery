@@ -218,7 +218,7 @@ class GameView(arcade.View):
         Random orders for a sandwich
         """
         monster_order = random.randint(0, 2)
-        print(monster_order)
+        
         if monster_order == 0:
             self.order_code = [0, 1, 0]
             self.order_sprite.texture = arcade.load_texture("images/order1.png")
@@ -228,7 +228,7 @@ class GameView(arcade.View):
         if monster_order == 2:
             self.order_code = [0, 1, 2, 4, 3, 0]
             self.order_sprite.texture = arcade.load_texture("images/order3.png")
-        print(self.order_code)
+        
 
     def add_ingredient(self, ingredient_texture, code):
         """
@@ -242,7 +242,7 @@ class GameView(arcade.View):
         )
         self.sandwich_sprite.append(ingredient)
         self.sandwich_code.append(code)
-        print(self.sandwich_code)
+        
     
     def reset_sandwich(self):
         """
