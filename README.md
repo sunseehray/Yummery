@@ -1,20 +1,15 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+Yummery is a sandwich building game. The player gathers ingredients in the correct order based on the sandwich monster's request. Ingredients can stack infinitely. If you made a mistake, you can dump the sandwich in the garbage bin and start again. Use the ENTER key for actions such as gathering ingredients, delivering to the monster, and dumping in the garbage bin. Use Q to quit the game.
 
-{Provide a description the game that you wrote. Describe how to play your game.}
+As an aspiring software developer, one of the niches that I am very interested in is game development. As a child until now, I have been fascinated by video games. This project was meant to start off as a matching game. However, in time, I thought of doing something like the ones I enjoyed before - games like Cook, Serve, Delicious!, Overcooked, and Burger Town.
 
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the game being played and a walkthrough of the code.}
+I had a lot of fun discovering how to develop games even with a simple Python code and Arcade. I hope that I'd be able to do more advanced stuff and use other technology such as Unity and Blender.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
 * Canva - graphic design
 * Python - programming language
 * Arcade - library
@@ -25,10 +20,10 @@
 * [Arcade Python Game Framework Tutorial by realpython](https://realpython.com/arcade-python-game-framework/)
 * [Python Arcade Library](https://api.arcade.academy/en/latest/)
 * [Arcade Starting Template](https://api.arcade.academy/en/latest/example_code/starting_template.html)
+* [Pixabay sound effects](https://pixabay.com/sound-effects/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Fix overlap collisions when fetching ingredients
+* Use sprite animations for visual effects such as walking around, deliverying, and garbaging
+* Have a counter display for counting the number of sandwiches that were successfully delivered

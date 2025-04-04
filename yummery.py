@@ -67,6 +67,14 @@ class GameView(arcade.View):
         # sandwich code list
         self.sandwich_code = []
 
+        # sound effects
+        self.background_sound = arcade.load_sound("audio/background-music-pa-57786.wav")
+        self.munch_sound = arcade.load_sound("audio/swallow-gobble-up-47610.wav")
+        self.fail_sound = arcade.load_sound("audio/error-8-206492.wav")
+        self.ingredient_sound = arcade.load_sound("audio/correct-choice-43861.wav")
+
+        arcade.play_sound(self.background_sound)
+
     def reset(self):
         """Reset the game to the initial state."""
         # Do changes needed to restart the game here if you want to support that
@@ -134,17 +142,23 @@ class GameView(arcade.View):
         if key == arcade.key.ENTER:
             if self.player_sprite.collides_with_sprite(self.monster_sprite) == True:
                 print("Sandwich delivered?")
+                arcade.play_sound(self.munch_sound)
                 self.reset_sandwich()
             if self.player_sprite.collides_with_sprite(self.bread_sprite) == True:
                 self.add_ingredient("images/bread.png", 0)
+                arcade.play_sound(self.ingredient_sound)
             if self.player_sprite.collides_with_sprite(self.patty_sprite) == True:
                 self.add_ingredient("images/patty.png", 1)
+                arcade.play_sound(self.ingredient_sound)
             if self.player_sprite.collides_with_sprite(self.cheese_sprite) == True:
                 self.add_ingredient("images/cheese.png", 2)
+                arcade.play_sound(self.ingredient_sound)
             if self.player_sprite.collides_with_sprite(self.lettuce_sprite) == True:
                 self.add_ingredient("images/lettuce.png", 3)
+                arcade.play_sound(self.ingredient_sound)
             if self.player_sprite.collides_with_sprite(self.tomato_sprite) == True:
                 self.add_ingredient("images/tomato.png", 4)
+                arcade.play_sound(self.ingredient_sound)
             if self.player_sprite.collides_with_sprite(self.garbage_sprite) == True:
                 self.reset_sandwich()
         pass
@@ -222,6 +236,12 @@ class GameView(arcade.View):
         self.sandwich_sprite.clear()
         self.sandwich_code = []
 
+    def build_order(self):
+        """
+        Display a random sandwich order
+        """
+        pass
+
 def main():
     """ Main function """
     # Create a window class. This is what actually shows up on screen
@@ -235,7 +255,6 @@ def main():
 
     # Start the arcade game loop
     arcade.run()
-
 
 if __name__ == "__main__":
     main()
@@ -254,5 +273,5 @@ if __name__ == "__main__":
 # GARBAGE BIN - done
 # DEBUG
 # DEMO
-# SOUND EFFECTS
+# SOUND EFFECTS - done
 # FINAL REPORT
