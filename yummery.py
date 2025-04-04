@@ -1,4 +1,5 @@
 import arcade
+import random
 
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 600
@@ -47,7 +48,10 @@ class GameView(arcade.View):
         self.all_sprites.append(self.lettuce_sprite)
 
         # floating order near monster
-        self.order_sprite = None
+        self.order_sprite = arcade.Sprite(scale=0.4)
+        self.order_sprite.center_x = WINDOW_WIDTH/2 - 75
+        self.order_sprite.bottom = 450 + 75
+        self.all_sprites.append(self.order_sprite)
 
         # player sprite starts at the center
         self.player_sprite = arcade.Sprite("images/player.png")
@@ -66,14 +70,17 @@ class GameView(arcade.View):
 
         # sandwich code list
         self.sandwich_code = []
+        self.order_code = []
 
         # sound effects
         self.background_sound = arcade.load_sound("audio/background-music-pa-57786.wav")
-        self.munch_sound = arcade.load_sound("audio/swallow-gobble-up-47610.wav")
         self.fail_sound = arcade.load_sound("audio/error-8-206492.wav")
         self.ingredient_sound = arcade.load_sound("audio/correct-choice-43861.wav")
 
+        # init background music
         arcade.play_sound(self.background_sound)
+        # init first order
+        self.monster_order()
 
     def reset(self):
         """Reset the game to the initial state."""
@@ -141,9 +148,12 @@ class GameView(arcade.View):
 
         if key == arcade.key.ENTER:
             if self.player_sprite.collides_with_sprite(self.monster_sprite) == True:
-                print("Sandwich delivered?")
-                arcade.play_sound(self.munch_sound)
-                self.reset_sandwich()
+                if self.sandwich_code == self.order_code:
+                    arcade.play_sound(self.ingredient_sound)
+                    self.reset_sandwich()
+                    self.monster_order()
+                else:
+                    arcade.play_sound(self.fail_sound)
             if self.player_sprite.collides_with_sprite(self.bread_sprite) == True:
                 self.add_ingredient("images/bread.png", 0)
                 arcade.play_sound(self.ingredient_sound)
@@ -203,17 +213,22 @@ class GameView(arcade.View):
         """
         pass
 
-    def monster_order():
+    def monster_order(self):
         """
         Random orders for a sandwich
         """
-        pass
-
-    def is_sandwich_matched(self):
-        """
-        Check to see if the sandwich delivered is the sandwich ordered
-        """
-        pass
+        monster_order = random.randint(0, 2)
+        print(monster_order)
+        if monster_order == 0:
+            self.order_code = [0, 1, 0]
+            self.order_sprite.texture = arcade.load_texture("images/order1.png")
+        if monster_order == 1:
+            self.order_code = [0, 1, 2, 0]
+            self.order_sprite.texture = arcade.load_texture("images/order2.png")
+        if monster_order == 2:
+            self.order_code = [0, 1, 2, 4, 3, 0]
+            self.order_sprite.texture = arcade.load_texture("images/order3.png")
+        print(self.order_code)
 
     def add_ingredient(self, ingredient_texture, code):
         """
@@ -236,12 +251,6 @@ class GameView(arcade.View):
         self.sandwich_sprite.clear()
         self.sandwich_code = []
 
-    def build_order(self):
-        """
-        Display a random sandwich order
-        """
-        pass
-
 def main():
     """ Main function """
     # Create a window class. This is what actually shows up on screen
@@ -258,20 +267,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-    
-######
-# NOTES
-# 3 Combos for now - 010, 0120, 012340
-
-# TO DO
-# GAME ASSETS - done
-# PLAYER SPRITE MOVEMENT - done
-# INGREDIENTS - done
-# SANDWICH BUILDING - done
-# DELIVERY
-# GARBAGE BIN - done
-# DEBUG
-# DEMO
-# SOUND EFFECTS - done
-# FINAL REPORT

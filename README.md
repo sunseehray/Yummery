@@ -4,7 +4,7 @@ Yummery is a sandwich building game. The player gathers ingredients in the corre
 
 As an aspiring software developer, one of the niches that I am very interested in is game development. As a child until now, I have been fascinated by video games. This project was meant to start off as a matching game. However, in time, I thought of doing something like the ones I enjoyed before - games like Cook, Serve, Delicious!, Overcooked, and Burger Town.
 
-I had a lot of fun discovering how to develop games even with a simple Python code and Arcade. I hope that I'd be able to do more advanced stuff and use other technology such as Unity and Blender.
+I had a lot of fun discovering how to develop games even with a simple Python code and Arcade. I hope that I'd be able to do more game development stuff and use other technology such as Unity.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -26,4 +26,5 @@ I had a lot of fun discovering how to develop games even with a simple Python co
 
 * Fix overlap collisions when fetching ingredients
 * Use sprite animations for visual effects such as walking around, deliverying, and garbaging
-* Have a counter display for counting the number of sandwiches that were successfully delivered
+* Put a time limit to the game
+* Count the number of sandwiches successfully delivered
