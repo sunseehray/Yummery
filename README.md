@@ -2,7 +2,7 @@
 
 Yummery is a sandwich building game. The player gathers ingredients in the correct order based on the sandwich monster's request. Ingredients can stack infinitely. If you made a mistake, you can dump the sandwich in the garbage bin and start again. Use the ENTER key for actions such as gathering ingredients, delivering to the monster, and dumping in the garbage bin. Use Q to quit the game.
 
-As an aspiring software developer, one of the niches that I am very interested in is game development. As a child until now, I have been fascinated by video games. This project was meant to start off as a matching game. However, in time, I thought of doing something like the ones I enjoyed before - games like Cook, Serve, Delicious!, Overcooked, and Burger Town.
+As an aspiring software developer, one of the niches that I am very interested in is game development. As a child until now, I have been fascinated by video games. This project was meant to start off as a matching game. However, in time, I thought of doing something like the ones I enjoyed before - games like Cook, Serve, Delicious! and Overcooked.
 
 I had a lot of fun discovering how to develop games even with a simple Python code and Arcade. I hope that I'd be able to do more game development stuff and use other technology such as Unity.
 
