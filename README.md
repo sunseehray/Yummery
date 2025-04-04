@@ -6,7 +6,7 @@ As an aspiring software developer, one of the niches that I am very interested i
 
 I had a lot of fun discovering how to develop games even with a simple Python code and Arcade. I hope that I'd be able to do more game development stuff and use other technology such as Unity.
 
-[Software Demo Video](hhttps://youtu.be/hTDv4lTujUg)
+[Software Demo Video](https://youtu.be/hTDv4lTujUg)
 
 # Development Environment
 
